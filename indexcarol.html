@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mensagemzinha</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #fff0f5;
+    font-family: Arial, sans-serif;
+    margin: 0;
+  }
+  h1 {
+    color: #ff69b4;
+  }
+  canvas {
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<h1>Você é linda!</h1>
+<canvas id="heartCanvas" width="200" height="200"></canvas>
+<script>
+  const canvas = document.getElementById('heartCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // Função para desenhar um coração em pixels
+  function drawHeart() {
+    ctx.fillStyle = 'red';
+    const size = 10; // Tamanho dos pixels
+    for (let y = 0; y < 20; y++) {
+      for (let x = 0; x < 20; x++) {
+        // Condição para formar o coração
+        const xx = (x - 10) / 2;
+        const yy = y - 10;
+        if ((xx * xx + yy * yy - Math.abs(xx * yy)) < 10) {
+          ctx.fillRect(x * size, y * size, size, size);
+        }
+      }
+    }
+  }
+
+  drawHeart();
+</script>
+</body>
+</html>
