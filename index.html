@@ -3,41 +3,35 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mensagenzinha meu girassol</title>
+<title>Você é linda!</title>
 <style>
   body {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     background-color: #fff0f5;
-    font-family: Arial, sans-serif;
     margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    position: relative;
+    display: inline-block;
+    padding: 20px;
   }
   h1 {
     position: relative;
-    color: #ff69b4;
+    color: pink;
     font-size: 2em;
     z-index: 1;
-    padding: 20px;
-    background: transparent;
-    border-radius: 10px;
+    text-align: center;
   }
-  #heartContainer {
+  canvas {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 0;
-  }
-  canvas {
-    display: block;
-  }
-  /* Para garantir que o texto fique acima do coração */
-  .container {
-    position: relative;
-    display: inline-block;
   }
 </style>
 </head>
@@ -50,22 +44,22 @@
   const canvas = document.getElementById('heartCanvas');
   const ctx = canvas.getContext('2d');
 
-  // Função para desenhar um grande coração azul
   function drawHeart() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.save();
     ctx.translate(canvas.width / 2, canvas.height / 2);
-    ctx.scale(1, -1); // Inverter o eixo y para facilitar o desenho
+    ctx.scale(1, -1); // inverter eixo y para facilitar o desenho
+
+    // Desenho do coração grande
     ctx.beginPath();
-    const size = 150; // tamanho do coração
-    ctx.moveTo(0, 0);
-    // Desenho do coração usando curvas de Bézier
+    const size = 200; // tamanho total do coração
     ctx.moveTo(0, 0);
     ctx.bezierCurveTo(-size, -size / 2, -size, size / 3, 0, size);
     ctx.bezierCurveTo(size, size / 3, size, -size / 2, 0, 0);
     ctx.closePath();
     ctx.fillStyle = 'blue';
     ctx.fill();
+
     ctx.restore();
   }
 
@@ -73,4 +67,3 @@
 </script>
 </body>
 </html>
-
